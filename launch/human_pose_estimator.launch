@@ -1,0 +1,11 @@
+<launch>
+
+    <node name="video_stream" pkg="video_stream_opencv" type="video_stream" output="screen"> 
+        <remap from="camera_name" to="/dev/video0"/>
+    </node>
+
+
+    <node name="human_pose_estimator" pkg="human_pose_estimator" type="human_pose_estimator" output="screen"> 
+        <remap from="/image_raw" to="/image_raw"/>
+    </node>
+</launch>
