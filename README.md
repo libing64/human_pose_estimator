@@ -41,7 +41,7 @@ Ubuntu 20.04 + ros noetic
 # 2. TODO
 ## 2.1 How to make the estimator more robust and accurate?
 - [x] record screen to gif
-- [ ] improve computation efficy
+- [ ] improve computation efficiency
 
 ## 3. record screen with byzanz
 ```
