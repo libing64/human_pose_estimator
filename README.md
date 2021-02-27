@@ -40,10 +40,8 @@ Ubuntu 20.04 + ros noetic
 
 # 2. TODO
 ## 2.1 How to make the estimator more robust and accurate?
-- [ ] local sparse bundle adjustment
 - [x] record screen to gif
-- [ ] mapping
-- [ ] fusing imu 
+- [ ] improve computation efficy
 
 ## 3. record screen with byzanz
 ```

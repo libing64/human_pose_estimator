@@ -1,11 +1,8 @@
 #include <iostream>
-#include <Eigen/Eigen>
 #include <ros/ros.h>
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/CameraInfo.h>
-#include <nav_msgs/Odometry.h>
-#include <nav_msgs/Path.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_broadcaster.h>
 #include <cv_bridge/cv_bridge.h>
@@ -14,7 +11,6 @@
 #include "human_pose_estimator.h"
 
 using namespace std;
-using namespace Eigen;
 using namespace cv;
 
 ros::Subscriber camera_info_sub;
