@@ -11,10 +11,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 
-#include <message_filters/subscriber.h>
-#include <message_filters/synchronizer.h>
-#include <message_filters/sync_policies/exact_time.h>
-#include <message_filters/sync_policies/approximate_time.h>
+#include "human_pose_estimator.h"
 
 using namespace std;
 using namespace Eigen;
@@ -22,7 +19,7 @@ using namespace cv;
 
 ros::Subscriber camera_info_sub;
 
-
+human_pose_estimator pose_estimator;
 
 void camera_info_callback(const sensor_msgs::CameraInfoConstPtr &msg)
 {
@@ -32,6 +29,7 @@ void camera_info_callback(const sensor_msgs::CameraInfoConstPtr &msg)
 void image_callback(const sensor_msgs::ImageConstPtr &image_msg)
 {
     Mat img = cv_bridge::toCvCopy(image_msg, string("bgr8"))->image;
+    pose_estimator.pose_estimate(img);
     imshow("img", img);
     waitKey(2);
 }
