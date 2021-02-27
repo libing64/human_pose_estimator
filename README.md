@@ -8,7 +8,7 @@
 * human pose drawing
 
 
-![kitti00](https://github.com/libing64/human_pose_estimator/blob/human_pose_estimator/image/human_pose_estimator.gif)
+![pose_skeleton](https://github.com/libing64/human_pose_estimator/blob/master/image/human_pose_estimator.gif)
 
 ## 1.2 Download models
 ```
