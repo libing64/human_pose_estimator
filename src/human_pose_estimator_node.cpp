@@ -30,8 +30,6 @@ void image_callback(const sensor_msgs::ImageConstPtr &image_msg)
 {
     Mat img = cv_bridge::toCvCopy(image_msg, string("bgr8"))->image;
     pose_estimator.pose_estimate(img);
-    imshow("img", img);
-    waitKey(2);
 }
 
 
@@ -41,8 +39,14 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "mono_vo");
     ros::NodeHandle n("~");
 
-    camera_info_sub = n.subscribe("/camera_info", 10, camera_info_callback);
-    ros::Subscriber image_sub = n.subscribe("/image_raw", 10, image_callback);
+    int blob_img_width = 120;
+    int blob_img_height = 120;
+    n.getParam("blob_img_width", blob_img_width);
+    n.getParam("blob_img_height", blob_img_height);
+    pose_estimator.set_blob_size(blob_img_width, blob_img_height);
+
+    camera_info_sub = n.subscribe("/camera_info", 1, camera_info_callback);
+    ros::Subscriber image_sub = n.subscribe("/image_raw", 1, image_callback);
 
     ros::spin();
     return 0;

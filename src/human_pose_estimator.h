@@ -44,15 +44,15 @@ public:
     Net net;
     Mat pose;
     Mat pose_image;
-    int img_width;
-    int img_height;
+    int blob_img_width;
+    int blob_img_height;
     float thresh = 0.01;
     float dt;
     human_pose_estimator();
     ~human_pose_estimator(){};
 
     void set_vis_enable(bool en){vis_enable = en;};
-    void set_image_size(int width, int height);
+    void set_blob_size(int width, int height);
     void pose_estimate(Mat& image);
     void draw_human_pose(Mat& image, Mat& pose);
 };

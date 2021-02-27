@@ -14,14 +14,15 @@ human_pose_estimator::human_pose_estimator()
     cout << "protoFile: " << protoFile << endl;
     cout << "wightsFile: " << weightsFile << endl;
     net = readNetFromCaffe(protoFile, weightsFile);
-    img_width = 368;
-    img_height = 368;
+    blob_img_width = 150;
+    blob_img_height = 150;
 }
 
-void human_pose_estimator::set_image_size(int width, int height)
+void human_pose_estimator::set_blob_size(int width, int height)
 {
-    img_width = width;
-    img_height = height;
+    blob_img_width = width;
+    blob_img_height = height;
+    cout << "blob img size: " << blob_img_width << "  " << blob_img_height << endl;
 }
 
 void human_pose_estimator::pose_estimate(Mat &image)
@@ -29,14 +30,16 @@ void human_pose_estimator::pose_estimate(Mat &image)
     double t = (double)cv::getTickCount();
 
     pose_image = image.clone();
-    Mat inpBlob = blobFromImage(image, 1.0 / 255, Size(img_width, img_height), Scalar(0, 0, 0), false, false);
+    Mat inpBlob = blobFromImage(image, 1.0 / 255, Size(blob_img_width, blob_img_height), Scalar(0, 0, 0), false, false);
 
     net.setInput(inpBlob);
     pose = net.forward();
 
     dt = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-
     draw_human_pose(pose_image, pose);
+
+    imshow("pose_skeleton", image);
+    waitKey(1);
 }
 
 void human_pose_estimator::draw_human_pose(Mat &image, Mat &pose)
@@ -84,6 +87,4 @@ void human_pose_estimator::draw_human_pose(Mat &image, Mat &pose)
         circle(image, partB, 8, Scalar(0, 0, 255), -1);
     }
     cv::putText(image, cv::format("time taken = %.2f sec", dt), cv::Point(50, 50), cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(255, 50, 0), 2);
-    // imshow("pose-Keypoints", pose_image);
-    imshow("pose-Skeleton", image);
 }

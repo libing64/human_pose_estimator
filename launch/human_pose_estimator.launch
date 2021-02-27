@@ -7,5 +7,7 @@
 
     <node name="human_pose_estimator" pkg="human_pose_estimator" type="human_pose_estimator" output="screen"> 
         <remap from="/image_raw" to="/image_raw"/>
+        <param name="blog_img_width" type="int" value="120"/>
+        <param name="blog_img_height" type="int" value="120"/>
     </node>
 </launch>
