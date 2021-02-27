@@ -8,7 +8,7 @@
 * human pose drawing
 
 
-![kitti00](https://github.com/libing64/human_pose_estimator/blob/human_pose_estimator_so3/image/human_pose_estimator_so3.png)
+![kitti00](https://github.com/libing64/human_pose_estimator/blob/human_pose_estimator/image/human_pose_estimator.gif)
 
 ## 1.2 Download models
 ```
@@ -38,3 +38,14 @@ roslaunch human_pose_estimator human_pose_estimator.launch
 Ubuntu 20.04 + ros noetic
 
 
+# 2. TODO
+## 2.1 How to make the estimator more robust and accurate?
+- [ ] local sparse bundle adjustment
+- [x] record screen to gif
+- [ ] mapping
+- [ ] fusing imu 
+
+## 3. record screen with byzanz
+```
+byzanz-record --delay 10 -d 30 human_pose_estimator.gif
+```
