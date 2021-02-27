@@ -38,7 +38,7 @@ void human_pose_estimator::pose_estimate(Mat &image)
     dt = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
     draw_human_pose(pose_image, pose);
 
-    imshow("pose_skeleton", image);
+    imshow("pose_skeleton", pose_image);
     waitKey(1);
 }
 
@@ -65,8 +65,8 @@ void human_pose_estimator::draw_human_pose(Mat &image, Mat &pose)
             p.x *= (float)frame_width / W;
             p.y *= (float)frame_height / H;
 
-            circle(pose_image, cv::Point((int)p.x, (int)p.y), 8, Scalar(0, 255, 255), -1);
-            cv::putText(pose_image, cv::format("%d", n), cv::Point((int)p.x, (int)p.y), cv::FONT_HERSHEY_COMPLEX, 1.1, cv::Scalar(0, 0, 255), 2);
+            circle(image, cv::Point((int)p.x, (int)p.y), 8, Scalar(0, 255, 255), -1);
+            cv::putText(image, cv::format("%d", n), cv::Point((int)p.x, (int)p.y), cv::FONT_HERSHEY_COMPLEX, 1.1, cv::Scalar(0, 0, 255), 2);
         }
         points[n] = p;
     }

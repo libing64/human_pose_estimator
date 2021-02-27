@@ -36,7 +36,7 @@ void image_callback(const sensor_msgs::ImageConstPtr &image_msg)
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "mono_vo");
+    ros::init(argc, argv, "human_pose_estimator");
     ros::NodeHandle n("~");
 
     int blob_img_width = 120;
